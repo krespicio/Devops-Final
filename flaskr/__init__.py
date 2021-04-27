@@ -1,6 +1,8 @@
 import os
 
-from flask import Flask
+from flask import Flask, render_template, request
+from .Battleship import Battleship
+import random
 
 
 def create_app(test_config=None):
@@ -28,5 +30,27 @@ def create_app(test_config=None):
     @app.route('/hello')
     def hello():
         return 'Hello, World!'
+
+    # the main game
+    @app.route('/')
+    def home():
+        global game
+        game = Battleship()
+        return render_template('main.html', grid=game.grid)
+
+    @app.route('/calculate', methods = ["POST"])
+    def calculate():
+        global game       
+        data = request.form
+
+        X = data['X']
+        Y = data['Y']
+        if game.validateInput(X,Y):
+            won = game.checkResult(int(X), int(Y))
+            if won:
+                print("we have a winner")
+                return render_template('winner.html')
+
+        return render_template('main.html', grid=game.grid) 
 
     return app
