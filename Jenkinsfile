@@ -4,6 +4,7 @@ pipeline {
         skipStagesAfterUnstable()
     }
     stages {
+        // Set up the python environment
         stage('Build') {
             agent {
                 docker {
@@ -28,23 +29,19 @@ pipeline {
                 }
             }
         }
+        // Deploy the app
         stage('Deliver') { 
             agent any
             environment { 
                 VOLUME = '$(pwd)/flaskr' // This is where the project belongs
-                IMAGE = 'jcdemo/flaskapp'
+                IMAGE = 'jcdemo/flaskapp' // May want to change docker image later...
             }
             steps {
-                // withEnv(["HOME=${env.WORKSPACE}"]) {
-                sh "pwd"
-                sh "echo ${VOLUME}"
                 sh "docker run -d --rm -v ${VOLUME} ${IMAGE} -p 56733:5000" 
-                // }
             }
             post {
                 success {
-                    sh 'echo wow'
-                    // sh "docker run --rm -v ${VOLUME} ${IMAGE} 'rm -rf build dist'"
+                    sh "docker run --rm -v ${VOLUME} ${IMAGE} 'rm -rf build dist'"
                 }
             }
         }
