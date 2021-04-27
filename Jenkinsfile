@@ -35,6 +35,7 @@ pipeline {
             }
             steps {
                 withEnv(["HOME=${env.WORKSPACE}"]) {
+                    sh "echo ${VOLUME}"
                     sh "docker run -d --rm -v ${VOLUME} ${IMAGE} -p 56733:5000" 
                 }
             }
