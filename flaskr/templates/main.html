@@ -1,5 +1,5 @@
 <html>
-	<body>
+	<body style="display:flex;justify-content:center;flex-direction: column;align-items: center;">
         <h1>Welcome to Battleship</h1>
 		<table>
             {%for row in grid%}
@@ -10,6 +10,7 @@
             </tr>
             {%endfor%}
         </table>
+        <br/>
         <form action="/calculate" method="post">
             <input name="X" placeholder="input X">
             <input name="Y" placeholder="input Y">
