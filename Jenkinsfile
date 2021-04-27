@@ -6,9 +6,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'sudo -H pip install flask'
-                sh 'sudo -H pip install pytest'
-                sh 'export FLASK_APP=flaskr'
+                sh 'virtualenv venv && . venv/bin/activate && pip install -r requirements.txt'
             }
         }
         stage('Test') {
