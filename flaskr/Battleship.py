@@ -2,10 +2,13 @@ import random
 from .Ship import Ship
 
 class Battleship:
-    def __init__(self):
+    def __init__(self, isRandom=True, pos=[]):
         self.grid = [["0" for i in range(5)] for j in range(4)]
         row = random.randint(0,1)
         col = random.randint(0,3)
+        if not isRandom and len(pos) == 2:
+            row = pos[0]
+            col = pos[1]
         self.ship = Ship([row,col],3)
         self.win = False
 

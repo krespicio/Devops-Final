@@ -1,11 +1,11 @@
 import random
 
 class Ship:
-    def __init__(self, start, length, isRow=False):
+    def __init__(self, start, length, isCol=False):
         self.stable = set()
         self.destroyed = set()
         for x in range(length):
-            if isRow:
+            if isCol:
                 self.stable.add(str(start[0]+x) + str(start[1]))
             else:
                 self.stable.add(str(start[0]) + str(start[1]+x))
