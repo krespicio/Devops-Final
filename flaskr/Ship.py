@@ -1,5 +1,6 @@
 import random
 
+# Represents a ship, used for battleship game
 class Ship:
     def __init__(self, start, length, isCol=False):
         self.stable = set()

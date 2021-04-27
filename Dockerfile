@@ -1,4 +1,5 @@
-FROM jenkins/jenkins:2.277.2-lts-jdk11
+# Dockerfile to run jenkins on my computer
+ROM jenkins/jenkins:2.277.2-lts-jdk11
 USER root
 RUN apt-get update && apt-get install -y apt-transport-https \
        ca-certificates curl gnupg2 \

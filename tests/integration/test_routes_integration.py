@@ -24,5 +24,5 @@ def test_calculate_post(client):
     print(rv.data)
     assert b'Welcome to Battleship' in rv.data
 
-    # Check the first row to see if we calculated the board properly after request
+    # Check a row to see if we calculated the board properly after request
     assert b'<td>X</td>\n                \n                <td>0</td>\n                \n                <td>0</td>\n                \n                <td>0</td>\n                \n                <td>0</td>\n' in rv.data

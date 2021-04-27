@@ -1,6 +1,7 @@
 import random
 from .Ship import Ship
 
+# This a battleship game that only uses one ship
 class Battleship:
     def __init__(self, isRandom=True, pos=[]):
         self.grid = [["0" for i in range(5)] for j in range(4)]

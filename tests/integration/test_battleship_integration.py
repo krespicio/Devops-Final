@@ -1,6 +1,7 @@
 import unittest
 from flaskr.Battleship import Battleship
 
+# Relies on the ship class
 class BattleshipInit(unittest.TestCase):
     def test_has_ship(self):
         test_game = Battleship(isRandom=False, pos=[1,1])
@@ -13,6 +14,7 @@ class BattleshipInit(unittest.TestCase):
         assert "12" in test_game.ship.stable
         assert "13" in test_game.ship.stable
 
+# Validation relies on two other functions
 class BattleshipValidation(unittest.TestCase):
     def test_valid(self):
         test_game = Battleship()
