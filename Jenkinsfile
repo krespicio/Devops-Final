@@ -12,8 +12,9 @@ pipeline {
             }
             steps {
                 // sh 'sudo -H python3 -m pip install -r requirements.txt --user'
-                sh 'echo hello'
-                sh '/usr/local/bin/python3 -m pip install --upgrade pip --user'
+                // sh 'echo hello'
+                sh 'pip install virtualenv'
+                // sh '/usr/local/bin/python3 -m pip install --upgrade pip --user'
             }
         }
         stage('Test') {
