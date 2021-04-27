@@ -29,6 +29,7 @@ pipeline {
             }
         }
         stage('Deliver') { 
+            agent any
             environment { 
                 VOLUME = '$(pwd)/flaskr' // This is where the project belongs
                 IMAGE = 'jcdemo/flaskapp'
