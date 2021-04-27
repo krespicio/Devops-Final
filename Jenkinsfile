@@ -41,7 +41,7 @@ pipeline {
             }
             post {
                 success {
-                    sh "docker run --rm -v ${VOLUME} ${IMAGE} 'rm -rf build dist'"
+                    sh "docker run -d --rm -v ${VOLUME} ${IMAGE} 'rm -rf build dist'"
                 }
             }
         }
