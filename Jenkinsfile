@@ -4,11 +4,11 @@ pipeline {
         skipStagesAfterUnstable()
     }
     stages {
-        stage('Build') {
-            steps {
-                sh 'sudo -H python3 -m pip install -r requirements.txt --user'
-            }
-        }
+        // stage('Build') {
+        //     steps {
+        //         sh 'sudo -H python3 -m pip install -r requirements.txt --user'
+        //     }
+        // }
         stage('Test') {
             steps {
                 sh 'python3 -m pytest'
