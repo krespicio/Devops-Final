@@ -6,8 +6,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'pip install flask'
-                sh 'pip install pytest'
+                sh 'sudo -H pip install flask'
+                sh 'sudo -H pip install pytest'
                 sh 'export FLASK_APP=flaskr'
             }
         }
