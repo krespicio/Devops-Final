@@ -1,21 +1,28 @@
 pipeline {
-    agent { docker { image 'python:3.7.2' } }
+    agent none
     options {
         skipStagesAfterUnstable()
     }
     stages {
-        // stage('Build') {
-        //     steps {
-        //         sh 'sudo -H python3 -m pip install -r requirements.txt --user'
-        //     }
-        // }
-        stage('Test') {
+        stage('Build') {
             agent {
                 docker {
-                    image 'qnib/pytest'
+                    image 'python'
                 }
             }
             steps {
+                // sh 'sudo -H python3 -m pip install -r requirements.txt --user'
+                sh 'echo hello'
+            }
+        }
+        stage('Test') {
+            agent {
+                docker {
+                    image 'python'
+                }
+            }
+            steps {
+                sh 'python3 -m pip3 install pytest'
                 sh 'python3 -m pytest'
             }
             // post {
@@ -25,7 +32,7 @@ pipeline {
             // }
         }
         // stage('Deliver') { 
-        //     agent any
+        //     agent {docker{ image 'jcdemo/flaskapp'}}
         //     environment { 
         //         VOLUME = '$(pwd)/sources:/src'
         //         IMAGE = 'cdrx/pyinstaller-linux:python2'
