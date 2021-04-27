@@ -4,14 +4,14 @@ pipeline {
         skipStagesAfterUnstable()
     }
     stages {
-        // stage('Build') {
-        //     steps {
-        //         sh 'pip install -r requirements.txt'
-        //     }
-        // }
+        stage('Build') {
+            steps {
+                sh 'python3 -m pip install -r requirements.txt'
+            }
+        }
         stage('Test') {
             steps {
-                sh 'pytest'
+                sh 'python3 -m pytest'
             }
             // post {
             //     always {
