@@ -30,7 +30,7 @@ pipeline {
         }
         stage('Deliver') { 
             environment { 
-                VOLUME = '$(pwd)/flaskr' // This is where the project belongs
+                VOLUME = load '$(pwd)/flaskr' // This is where the project belongs
                 IMAGE = 'jcdemo/flaskapp'
             }
             steps {
