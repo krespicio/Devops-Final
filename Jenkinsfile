@@ -22,7 +22,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'python3 -m pip3 install pytest'
+                sh 'python3 -m pip install pytest'
                 sh 'python3 -m pytest'
             }
             // post {
