@@ -30,15 +30,15 @@ pipeline {
         }
         stage('Deliver') { 
             environment { 
-                VOLUME = load '$(pwd)/flaskr' // This is where the project belongs
+                VOLUME = '$(pwd)/flaskr' // This is where the project belongs
                 IMAGE = 'jcdemo/flaskapp'
             }
             steps {
-                withEnv(["HOME=${env.WORKSPACE}"]) {
-                    sh "echo ${VOLUME}"
-                    sh "pwd"
-                    sh "docker run -d --rm -v ${VOLUME} ${IMAGE} -p 56733:5000" 
-                }
+                // withEnv(["HOME=${env.WORKSPACE}"]) {
+                sh "pwd"
+                sh "echo ${VOLUME}"
+                sh "docker run -d --rm -v ${VOLUME} ${IMAGE} -p 56733:5000" 
+                // }
             }
             post {
                 success {
