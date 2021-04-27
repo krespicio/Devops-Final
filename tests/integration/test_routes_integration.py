@@ -20,7 +20,7 @@ def test_home_route(client):
 
 # This is definitely an integration test
 def test_calculate_post(client):
-    rv = client.post('/calculate', data=dict(X=0,Y=0))
+    rv = client.post('/calculate', data=dict(X=3,Y=0))
     print(rv.data)
     assert b'Welcome to Battleship' in rv.data
 
