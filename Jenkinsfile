@@ -13,12 +13,7 @@ pipeline {
             steps {
                 withEnv(["HOME=${env.WORKSPACE}"]) {
                     sh 'pip install --user -r requirements.txt'
-                    // sh 'python WebChecker.py'
                 }
-                // sh 'sudo -H python3 -m pip install -r requirements.txt --user'
-                // sh 'echo hello'
-                // sh 'pip install virtualenv'
-                // sh '/usr/local/bin/python3 -m pip install --upgrade pip --user'
             }
         }
         stage('Test') {
@@ -28,8 +23,10 @@ pipeline {
                 }
             }
             steps {
-                // sh 'python3 -m pip install pytest'
-                sh 'python3 -m pytest'
+                withEnv(["HOME=${env.WORKSPACE}"]) {
+                    // sh 'pip install --user -r requirements.txt'
+                    sh 'python3 -m pytest'
+                }
             }
             // post {
             //     always {
